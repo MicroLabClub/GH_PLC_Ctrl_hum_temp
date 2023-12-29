@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <project xmlns:ns1="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.plcopen.org/xml/tc6_0201">
   <fileHeader companyName="Unknown" productName="Controller" productVersion="1" creationDateTime="2022-08-16T15:49:17"/>
-  <contentHeader name="Controller" modificationDateTime="2023-12-28T19:11:23">
+  <contentHeader name="Controller" modificationDateTime="2023-12-28T19:43:36">
     <coordinateInfo>
       <fbd>
         <scaling x="10" y="10"/>
@@ -3230,11 +3230,13 @@
           <task name="task0" priority="0" interval="T#50ms">
             <pouInstance name="instance0" typeName="main"/>
             <pouInstance name="instance2" typeName="temp"/>
-            <pouInstance name="instance3" typeName="heater"/>
-            <pouInstance name="instance4" typeName="pump"/>
           </task>
           <task name="task1" priority="0" interval="T#20ms">
             <pouInstance name="instance1" typeName="mqtt"/>
+          </task>
+          <task name="task2" priority="0" interval="T#100ms">
+            <pouInstance name="instance3" typeName="heater"/>
+            <pouInstance name="instance4" typeName="pump"/>
           </task>
           <globalVars>
             <variable name="temp_set_point">
@@ -3285,7 +3287,7 @@
                 <simpleValue value="FALSE"/>
               </initialValue>
             </variable>
-            <variable name="heater_state">
+            <variable name="heater_state" address="%QX0.0">
               <type>
                 <BOOL/>
               </type>
@@ -3293,7 +3295,7 @@
                 <simpleValue value="FALSE"/>
               </initialValue>
             </variable>
-            <variable name="pump_state">
+            <variable name="pump_state" address="%QX0.1">
               <type>
                 <BOOL/>
               </type>
